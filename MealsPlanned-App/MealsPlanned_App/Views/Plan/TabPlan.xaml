@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:CustomView="clr-namespace:MealsPlanned_App.CustomView"
+             x:Class="MealsPlanned_App.Views.TabPlan">    
+    
+    <TabbedPage.ItemTemplate>
+        <DataTemplate x:Name="template">
+            <ContentPage Title="{Binding DayOfWeek}" >
+                <ScrollView x:Name="scrollView">
+                    <StackLayout>
+
+                        <StackLayout Padding="5, 25" IsVisible="{Binding HideRecipe}">
+                            <Label Text="Nenhuma receita selecionada para este dia" 
+                            Font="Bold,Large" HorizontalOptions="Center" />
+
+                            <Button x:Name="BtnGoToRecipes" Text="Procurar Receitas" Clicked="BtnGoToRecipes_Clicked" />
+                        </StackLayout>
+
+                        <StackLayout Padding="5, 25" IsVisible="{Binding ShowRecipe}">
+                            <Label Text="{Binding Recipe.Title}" Font="Bold,Large" HorizontalOptions="Center" />
+
+                            <Image Source="{Binding Recipe.RecipeImage}" x:Name="ImgRecipe" WidthRequest="200" HeightRequest="200" />
+
+                            <Label Text="Ingredientes" Font="Bold,Large" HorizontalOptions="Center" />
+
+                            <ListView  x:Name="listView" ItemsSource="{Binding Recipe.Ingredients}" HorizontalOptions="Center" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+
+                                            <CustomView:IngredientView Quantity="{Binding Quantity}"
+                                                                       UnityOfMeasureName="{Binding UnityOfMeasureName}"
+                                                                       Name="{Binding Name}"
+                                                                       Observation="{Binding Observation}"/>                                            
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Label Text="Modo de preparo" Font="Bold,Large" HorizontalOptions="Center" />
+
+                            <ListView  x:Name="steps" ItemsSource="{Binding Recipe.Steps}" HorizontalOptions="Center" RowHeight="100" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Vertical" Padding="15,10" >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Step}" TextColor="#f35e20" />
+                                                    <Label Text="{Binding Description}" TextColor="#503026" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </ContentPage>
+        </DataTemplate>
+    </TabbedPage.ItemTemplate>
+</TabbedPage>

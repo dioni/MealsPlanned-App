@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealsPlanned_App.Views.RecipeList">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Entry Text="{Binding Query.SearchText}" 
+                   Placeholder="Digite sua busca" />
+
+            <Button x:Name="btnSearch" 
+                    Text="Buscar" />
+
+            <ListView x:Name="ListViewRecipes" 
+                      HorizontalOptions="Center" 
+                      RowHeight="100" 
+                      ItemsSource="{Binding Recipes}" >
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" 
+                                         Padding="15,10" >
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding RecipeImage}" 
+                                           WidthRequest="60" 
+                                           HeightRequest="60" 
+                                           VerticalOptions="Start" />
+
+                                    <Label Text="{Binding Title}" 
+                                           TextColor="#503026" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

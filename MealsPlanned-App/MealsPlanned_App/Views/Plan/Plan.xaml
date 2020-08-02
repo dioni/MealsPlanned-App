@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealsPlanned_App.Views.Plan"
+             Title="Planejamento">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="plainButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E8AD00"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <Style x:Key="navButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ddd"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="22" />
+            </Style>
+            <Style x:Key="dayButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E8AD00"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout>
+                <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+                    <Grid.RowDefinitions>
+                      <!--0--><RowDefinition Height="60" />
+                      <!--1--><RowDefinition Height="60" />
+                      <!--2--><RowDefinition Height="60" />
+                      <!--3--><RowDefinition Height="60" />
+                      <!--4--><RowDefinition Height="60" />
+                      <!--5--><RowDefinition Height="60" />
+                      <!--6--><RowDefinition Height="60" />
+                      <!--7--><RowDefinition Height="20" />
+                      <!--8--><RowDefinition Height="60" />
+                      <!--9--><RowDefinition Height="20" />
+                      <!--10--><RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="90" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--0-->
+                    <Label Text="18/01/2018" Grid.Row="0" Grid.Column="0" 
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" 
+                           TextColor="Blue" 
+                           x:Name="lblToday"
+                           FontSize="20" 
+                           Grid.ColumnSpan="3" />
+
+                    <Button x:Name="btnDom" CommandParameter="0" Text="Dom" Grid.Row="0" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+                    <!--1-->
+                    <Image Grid.Row="1" Grid.Column="0" 
+                           x:Name="recipeImage" 
+                           VerticalOptions="Start" 
+                           HorizontalOptions="CenterAndExpand" 
+                           Grid.RowSpan="3"
+                           Grid.ColumnSpan="3"/>
+
+                    <Button x:Name="btnSeg" CommandParameter="1"  Text="Seg" Grid.Row="1" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    
+                    <!--2-->
+                    <Button x:Name="btnTer"  CommandParameter="2" Text="Ter" Grid.Row="2" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    
+                    <!--3-->
+                    <Button  x:Name="btnQua"  CommandParameter="3" Text="Qua" Grid.Row="3" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    
+                    <!--4-->
+                    <Label Text="MACARRÃO COM CALABRESA NA PANELA DE PRESSÃO" 
+                           Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" 
+                           TextColor="Blue" 
+                           FontSize="15" 
+                           Grid.RowSpan="6" Grid.ColumnSpan="3" />
+
+                    <Button  x:Name="btnQui"  CommandParameter="4" Text="Qui" Grid.Row="4" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    
+                    <!--5-->
+                    <Button x:Name="btnSex"  CommandParameter="5"  Text="Sex" Grid.Row="5" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    
+                    <!--6-->
+                    <Button x:Name="btnSab"  CommandParameter="6" Text="Sab" Grid.Row="6" Grid.Column="3" Style="{StaticResource dayButton}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                    
+                    <!--7-->
+                    
+                    <!--8-->
+                    <Button Text="Gerar lista de compras" Grid.Row="8" Grid.Column="0" 
+                            Grid.ColumnSpan="3" Style="{StaticResource plainButton}" />
+                    
+                    <!--9-->
+
+                    <!--10-->
+                    <Button Text="&lt;&lt;" Grid.Row="10" Grid.Column="0" 
+                            Style="{StaticResource navButton}" />
+
+                    <Label Text="Navegar entre as semanas" Grid.Row="10" Grid.Column="1" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" TextColor="Blue" FontSize="15" Grid.ColumnSpan="2" />
+
+                    <Button Text="&gt;&gt;" Grid.Row="10" Grid.Column="3" 
+                            Style="{StaticResource navButton}"  />
+                    
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

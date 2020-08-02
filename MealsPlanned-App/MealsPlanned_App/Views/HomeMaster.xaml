@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="MealsPlanned_App.Views.HomeMaster"
+             Title="Master">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="appName" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="25" />
+            </Style>
+            <Style x:Key="userName" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            
+            <Style x:Key="menuItem" TargetType="Label">
+                <Setter Property="TextColor" Value="#777" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+            <Style x:Key="navButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ddd"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="22" />
+            </Style>
+            <Style x:Key="dayButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E8AD00"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+    <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}">
+      <ListView.Header>
+
+          <Grid BackgroundColor="White" Padding="0, 0, 0, 50" >
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+          </Grid.RowDefinitions>
+
+          <Image Source="logoApp.png" 
+                 x:Name="AppLogo" 
+                 VerticalOptions="StartAndExpand"
+                 HorizontalOptions="Center"
+                 HeightRequest="100"
+                 WidthRequest="100"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="3"
+                 Grid.RowSpan="3"/>
+          
+          <Label 
+              Grid.Column="0"
+              Grid.Row="2"   
+              Grid.ColumnSpan="3"
+              Text="Cardápio Semanal"
+              HorizontalOptions="Center"
+              Style="{StaticResource appName}"/>
+
+          <Label 
+              Grid.Column="0"
+              Grid.Row="3"
+              Grid.ColumnSpan="3"
+              Text="Dioni Francisco"
+              HorizontalOptions="Center"
+              Style="{StaticResource userName}"/>
+
+        
+        </Grid>
+      </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+          <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+
+                
+            <Image Source="{Binding PageIcon}" WidthRequest="30" HeightRequest="30" VerticalOptions="Start" />
+
+            <Label VerticalOptions="FillAndExpand" 
+                    VerticalTextAlignment="Center" 
+                    Text="{Binding Title}" 
+                    Style="{StaticResource menuItem}"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

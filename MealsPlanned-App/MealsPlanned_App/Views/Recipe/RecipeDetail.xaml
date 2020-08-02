@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                          
+             xmlns:CustomView="clr-namespace:MealsPlanned_App.CustomView"
+             x:Class="MealsPlanned_App.Views.RecipeDetail" >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--<Style TargetType="local:QuantityLabel">
+                <Setter Property="TextColor" Value="DarkRed"/>
+            </Style>-->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView x:Name="scrollView">
+            <StackLayout Padding="5, 25">
+
+                <Button x:Name="BtnShowPlanDate" 
+                        Text="Adicionar ao Planejamento"
+                        Clicked="BtnShowPlanDate_Clicked">
+                </Button>
+
+                <DatePicker 
+                    x:Name="PlanDate" 
+                    IsVisible="{Binding IsPlanDateVisible}" 
+                    Date="{Binding PlanDate}" />
+
+                <Button x:Name="BtnAddToPlan" 
+                        IsVisible="{Binding IsPlanDateVisible}"
+                        CommandParameter="{Binding Recipe.Id}" 
+                        Text="Ok" Clicked="BtnAddToPlan_Clicked" />
+
+                <Label Text="{Binding Recipe.Title}" 
+                       Font="Bold,Large" 
+                       HorizontalOptions="Center" />
+
+                <Image Source="{Binding Recipe.RecipeImage}" 
+                       x:Name="ImgRecipe" 
+                       WidthRequest="200" 
+                       HeightRequest="200" />
+
+                <Label Text="Ingredientes" 
+                       Font="Bold,Large" 
+                       HorizontalOptions="Center" />
+
+                <ListView  x:Name="listView" 
+                           ItemsSource="{Binding Recipe.Ingredients}" 
+                           HorizontalOptions="Center" >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <CustomView:IngredientView Quantity="{Binding Quantity}"
+                                                           UnityOfMeasureName="{Binding UnityOfMeasureName}"
+                                                           Name="{Binding Name}"
+                                                           Observation="{Binding Observation}"/>                                
+                                
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="Modo de preparo" 
+                       Font="Bold,Large" 
+                       HorizontalOptions="Center" />
+
+                <ListView  x:Name="steps" 
+                           ItemsSource="{Binding Recipe.Steps}" 
+                           HorizontalOptions="Center" 
+                           RowHeight="100">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Padding="15,10" >
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <Label Text="{Binding Step}" 
+                                               TextColor="#f35e20" />
+
+                                        <Label Text="{Binding Description}" 
+                                               TextColor="#503026" />
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
